@@ -154,8 +154,8 @@ public class While extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfCuota5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bPagar5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(bPagar5, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                .addGap(471, 471, 471))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,7 +202,15 @@ public class While extends javax.swing.JFrame {
 
     private void bContar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bContar4ActionPerformed
         try {
-
+            float num =0;
+            float contador = 0;
+            while(num != -1){
+                num = Integer.parseInt(JOptionPane.showInputDialog("Escribe una calificación diferente de -1"));
+                if(num >= 60){
+                    contador ++;
+                }
+            }
+            JOptionPane.showMessageDialog(null, contador, "Aprobados",JOptionPane.INFORMATION_MESSAGE);
         } catch (NumberFormatException ex) {
 
         }
@@ -227,7 +235,22 @@ public class While extends javax.swing.JFrame {
     private void bVerificar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVerificar3ActionPerformed
         // TODO add your handling code here:
         int num = Integer.parseInt(tfNum3.getText());
-        int i,j, contador;
+        int div = 0;
+        int suma = 0;
+        int i=1;
+        while( i<= num){
+            if(i%num==0){
+                div = i;
+                suma+=div;
+            }
+            i++;
+        }
+        if(suma == num){
+            JOptionPane.showMessageDialog(null, "Es un numero perfecto");
+        }else{
+            JOptionPane.showMessageDialog(null, "No es un numero perfecto");
+        }
+        
         
     }//GEN-LAST:event_bVerificar3ActionPerformed
 
@@ -247,6 +270,24 @@ public class While extends javax.swing.JFrame {
 
     private void bPagar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPagar5ActionPerformed
         // TODO add your handling code here:
+        int saldo = 1000;
+        int suma = 0;
+        int entrada=0;
+        int contadorDeCuotas =0;
+        int cuotasRestantes =0;
+        while( suma < saldo){
+             entrada=Integer.parseInt(JOptionPane.showInputDialog("Ingrese una cuota"));
+             suma = suma+ entrada;
+             contadorDeCuotas ++;
+             if(suma <= saldo){
+                 cuotasRestantes = saldo -suma;
+             }
+        }
+        JOptionPane.showMessageDialog(null,entrada, "Entrada de: ", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null,cuotasRestantes, "Saldo restante ", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null,contadorDeCuotas, "Cuotas dadas: ", JOptionPane.INFORMATION_MESSAGE);
+
+        
     }//GEN-LAST:event_bPagar5ActionPerformed
 
     /**
